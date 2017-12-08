@@ -11,7 +11,6 @@ from sklearn.datasets import load_svmlight_file
 from sklearn.model_selection import train_test_split
 
 
-
 def h(w,X):
 
     return X.dot(w)
@@ -23,7 +22,6 @@ def hinge_loss(w,X,Y,C=1.0):
     num_records,num_features  = np.shape(X)  
 
     zero = np.zeros((num_records,1))
-
     margin = 1 - C * Y * h(w,X)
 
     return np.max([zero,margin],axis=0)
@@ -58,12 +56,9 @@ def g(w,X,Y,lamda=0.0,C=1.0):
 
     return - 1.0/float(num_records) * C \
 
-        * X.transpose().dot(Y * indicator).sum(axis=1).reshape((num_features,1)) \
-
-        + lamda * w
+        * X.transpose().dot(Y * indicator).sum(axis=1).reshape((num_features,1))  + lamda * w
 
     
-
 def predict(w,X,threshold=0.5):
 
     raw = h(w,X)
@@ -94,7 +89,7 @@ def accuracy(w,X,Y,threshold=0.5):
 
 
 
-data = load_svmlight_file("./resources/australian_scale.txt")
+data = load_svmlight_file("C:/Users/15696/Desktop/australian_scale.txt")
 
 # add interception
 
